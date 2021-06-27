@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { useEffect, useState } from 'react'
 import profile from './../store/Profile'
+import Input from './stylesComponent/Input';
+import Button from './stylesComponent/Button';
 
 export const PofileComponent = observer(() => {
 
@@ -42,7 +44,7 @@ export const PofileComponent = observer(() => {
     return (
         <div>
             <h3>Profile info:</h3>
-            <button onClick={() => { setVisibleEdit(!visibleEdit) }}>Change profile</button>
+            <Button onClick={() => { setVisibleEdit(!visibleEdit) }}>Change profile</Button>
             {!visibleEdit ? <div>
 
                 {profile.profile && <div>
@@ -56,13 +58,13 @@ export const PofileComponent = observer(() => {
             </div>
                 :
                 <div>
-                    <input placeholder='name' value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                    <Input  placeholder='name' value={name} onChange={(e) => { setName(e.target.value) }}></Input>
                     <div>
-                        <input placeholder='vk' value={vk} onChange={(e) => { setVk(e.target.value) }}></input>
+                        <Input backColor={'#FFE4B5'} placeholder='vk' value={vk} onChange={(e) => { setVk(e.target.value) }}></Input>
                     </div>
-                    <input placeholder='github' value={github} onChange={(e) => { setGithub(e.target.value) }}></input>
+                    <Input backColor={'#FFEFD5'} placeholder='github' value={github} onChange={(e) => { setGithub(e.target.value) }}></Input>
                     <div>
-                        <button onClick={changeInfo}>Save</button></div>
+                        <Button outline color={'red'}  onClick={changeInfo}>Save</Button></div>
                 </div>
             }
             {profile.isLoading ? <div>Saving process...</div> : null}
